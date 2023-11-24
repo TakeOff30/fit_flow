@@ -1,0 +1,1 @@
+//modal del workout con la lista di esercizi (exercise_item)

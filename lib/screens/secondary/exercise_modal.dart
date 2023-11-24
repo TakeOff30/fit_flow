@@ -1,0 +1,1 @@
+//modal degli esercizi con la lista di esercizi (exercise_item)

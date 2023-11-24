@@ -1,0 +1,1 @@
+//lista di esercizi (composto da exercise_item)

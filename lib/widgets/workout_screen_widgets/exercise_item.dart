@@ -1,0 +1,1 @@
+//elemento della lista di esercizi (1 pull up rep...)
