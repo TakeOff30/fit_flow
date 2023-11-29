@@ -1,0 +1,3 @@
+class ExerciseIsometric {
+  DateTime duration;
+}
