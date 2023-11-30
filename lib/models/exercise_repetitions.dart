@@ -1,13 +1,12 @@
-class ExerciseRepetions extends Exercise {
+import './exerciseType.dart';
+import './exercise.dart';
+
+//sottoclasse di Exercise che contiene il numero di ripetizioni dell'esercizio
+class ExerciseRepetitions extends Exercise {
   final int _repetitions;
 
-  ExerciseRepetions(this.repetitions);
+  ExerciseRepetitions(int sets, ExerciseType exeInfo, this._repetitions)
+      : super(exeInfo, sets);
 
-  ExerciseType get exeinfo => _exeInfo;
   int get repetitions => _repetitions;
-  int get sets => _sets;
-
-  void addSetDone() {
-    _setsDone++;
-  }
 }
