@@ -17,9 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start, // Allinea gli elementi a sinistra
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.work,
@@ -38,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 24), // Spazio tra le righe
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.timer,
@@ -57,7 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 24), // Spazio tra le righe
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.star,
