@@ -1,6 +1,7 @@
 import 'package:fit_flow/screens/home_screen.dart';
 import 'package:fit_flow/screens/workout_screen.dart';
 import 'package:flutter/material.dart';
+import '../utils.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -34,10 +35,10 @@ class _NavBarState extends State<NavBar> {
             ),
             Container(
               height: 1,
-              color: Color(0xFF4A4A4A), 
+              color: Color(0xFF4A4A4A),
             ),
             BottomNavigationBar(
-              backgroundColor: Color(0xFF1E1E1E),
+              backgroundColor: primaryColor,
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   icon: Icon(Icons.fitness_center),
@@ -53,9 +54,9 @@ class _NavBarState extends State<NavBar> {
                 ),
               ],
               currentIndex: _selectedIndex,
-              selectedItemColor: Color(0xFF39FF14),
-              unselectedItemColor: Color(0xFFC0C0C0),
-              showSelectedLabels: false, 
+              selectedItemColor: secondaryColor,
+              unselectedItemColor: tertiaryColor,
+              showSelectedLabels: false,
               showUnselectedLabels: false,
               onTap: _onItemTapped,
             ),
