@@ -12,8 +12,8 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
   static const List<Widget> _screens = <Widget>[
-    HomeScreen(),
     WorkoutScreen(),
+    HomeScreen(),
     Text('Profile Page'),
   ];
 
@@ -27,26 +27,40 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _screens.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.fitness_center),
-            label: 'Create Workout',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: 'Calendar',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
+        child: Column(
+          children: [
+            Expanded(
+              child: _screens.elementAt(_selectedIndex),
+            ),
+            Container(
+              height: 1,
+              color: Color(0xFF4A4A4A), 
+            ),
+            BottomNavigationBar(
+              backgroundColor: Color(0xFF1E1E1E),
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.fitness_center),
+                  label: '',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: '',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calendar_month),
+                  label: '',
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: Color(0xFF39FF14),
+              unselectedItemColor: Color(0xFFC0C0C0),
+              showSelectedLabels: false, 
+              showUnselectedLabels: false,
+              onTap: _onItemTapped,
+            ),
+          ],
+        ),
       ),
     );
   }
