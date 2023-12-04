@@ -2,6 +2,7 @@
 
 import 'package:fit_flow/models/exercise.dart';
 import 'package:fit_flow/models/workout.dart';
+import 'package:fit_flow/screens/secondary/calendar_modal.dart';
 import 'package:fit_flow/utils.dart';
 import 'package:fit_flow/workout_screen_widgets/exercise_list.dart';
 import 'package:flutter/material.dart';
@@ -97,10 +98,15 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                     ),
                   )),
                 ),
-                Icon(
-                  Icons.calendar_month,
-                  color: secondaryColor,
-                )
+                IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) =>
+                            CalendarModal(initialDate: _dueDate),
+                      );
+                    },
+                    icon: Icon(Icons.calendar_month))
               ],
             ),
             ExerciseList(),
