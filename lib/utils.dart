@@ -2,6 +2,7 @@
 //nella responsabilità di nessuna classe
 import 'package:fit_flow/models/exercise.dart';
 import 'package:fit_flow/models/exerciseType.dart';
+import 'package:fit_flow/models/exercise_isometric.dart';
 import 'package:fit_flow/models/exercise_repetitions.dart';
 import 'package:fit_flow/models/muscles.dart';
 import 'package:fit_flow/models/workout.dart';
@@ -13,6 +14,10 @@ Exercise exercise =
     ExerciseRepetitions(5, ExerciseType('Push ups', Muscle.Chest), 10);
 Workout esempio1 =
     Workout.withExercises('Esempio1', DateTime.now(), [exercise]);
+
+//available exercises
+Exercise pushUpIso = ExerciseIsometric(
+    5, ExerciseType('Push ups', Muscle.Chest), Duration(seconds: 60));
 
 //styles
 Color primaryColor = Color(0xFF1E1E1E);
