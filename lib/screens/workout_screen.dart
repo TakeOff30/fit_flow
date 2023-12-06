@@ -21,11 +21,11 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Scaffold(
+        body: Center(
       child: Container(
         color: primaryColor,
         padding: EdgeInsets.fromLTRB(20, 70, 20, 20),
-        // ignore: prefer_const_constructors
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -84,7 +84,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                   child: TextField(
                       decoration: InputDecoration(
                     labelStyle: TextStyle(color: tertiaryColor),
-                    labelText: 'Pick a date',
+                    labelText: "$_dueDate",
                     border: OutlineInputBorder(),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -102,11 +102,20 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                     onPressed: () {
                       showDialog(
                         context: context,
-                        builder: (context) =>
-                            CalendarModal(initialDate: _dueDate),
+                        builder: (context) => CalendarModal(
+                          initialDate: _dueDate,
+                          updateInitialDate: (date) {
+                            setState(() {
+                              _dueDate = date;
+                            });
+                          },
+                        ),
                       );
                     },
-                    icon: Icon(Icons.calendar_month))
+                    icon: Icon(
+                      Icons.calendar_month,
+                      color: secondaryColor,
+                    ))
               ],
             ),
             ExerciseList(),
@@ -134,6 +143,6 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
           ],
         ),
       ),
-    );
+    ));
   }
 }

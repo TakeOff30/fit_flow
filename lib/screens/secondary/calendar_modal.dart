@@ -4,8 +4,10 @@ import 'package:table_calendar/table_calendar.dart';
 
 class CalendarModal extends StatefulWidget {
   final DateTime initialDate; // Add a property to store the initial date
+  final Function(DateTime) updateInitialDate;
 
-  CalendarModal({required this.initialDate});
+  CalendarModal(
+      {super.key, required this.initialDate, required this.updateInitialDate});
 
   @override
   _CalendarModalState createState() => _CalendarModalState();
@@ -43,6 +45,7 @@ class _CalendarModalState extends State<CalendarModal> {
                 _selectedDay = selectedDay;
                 _focusedDay = focusedDay;
               });
+              widget.updateInitialDate(selectedDay);
             },
             onFormatChanged: (format) {
               setState(() {
@@ -54,7 +57,7 @@ class _CalendarModalState extends State<CalendarModal> {
           ElevatedButton(
             onPressed: () {
               // You can use the selected date in your application logic
-              print('Selected Date: $_selectedDay');
+              print(widget.initialDate);
               Navigator.of(context).pop(); // Close the dialog
             },
             child: Text('Select Date'),
