@@ -7,7 +7,7 @@ import 'package:fit_flow/screens/workout_screen.dart';
 class HomeScreen extends StatefulWidget {
   final Function(int) routeToWorkoutScreen;
 
-  const HomeScreen({super.key, required this.routeToWorkoutScreen});
+  const HomeScreen({Key? key, required this.routeToWorkoutScreen});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -21,22 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF1E1E1E),
-<<<<<<< Updated upstream
-      body: Stack(
-        children: [
-          Positioned(
-            top: 20,
-            left: 0,
-            right: 0,
-            child: Container(
-              alignment: Alignment.center,
-              child: Text(
-                'Welcome Back',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-=======
       body: Padding(
         padding: EdgeInsets.all(16.32),
         child: Center(
@@ -44,100 +28,77 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Padding(
+                padding: EdgeInsets.all(60),
+                child: Text(
+                  'Welcome Back',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
               ElevatedButton(
-                onPressed: () {
-                  widget.routeToWorkoutScreen(0);
-                },
+                onPressed: () => _showTodaysWorkoutsModal(context),
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF39FF14), // Colore di sfondo
-                  onPrimary: Color(0xFF1E1E1E), // Colore del testo
-                  minimumSize: Size.fromHeight(100), // Altezza fissa di 100
+                  primary: Color(0xFF39FF14),
+                  onPrimary: Color(0xFF1E1E1E),
+                  minimumSize: Size.fromHeight(100),
                   shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(20), // Corner radius di 20
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
                 child: Text(
-                  'Create Workout',
+                  'Today\'s Workouts',
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Lato',
                   ),
->>>>>>> Stashed changes
                 ),
               ),
-            ),
+              SizedBox(height: 100),
+              buildRow('assets/icons/back.svg', 'Last Workout:', '45 min'),
+              SizedBox(height: 24),
+              buildRow('assets/icons/timer.svg', 'Tot Time:', '1h 30 min'),
+              SizedBox(height: 24),
+              buildRow('assets/icons/fire.svg', 'Streak:', '5 days'),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.all(16.32),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ElevatedButton(
-                    onPressed: () => _showTodaysWorkoutsModal(context),
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF39FF14),
-                      onPrimary: Color(0xFF1E1E1E),
-                      minimumSize: Size.fromHeight(100),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: Text(
-                      'Today\'s Workouts',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Lato',
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 100),
-                  buildRow('assets/icons/back.svg', 'Last Workout:', '45 min'),
-                  SizedBox(height: 24),
-                  buildRow('assets/icons/timer.svg', 'Tot Time:', '1h 30 min'),
-                  SizedBox(height: 24),
-                  buildRow('assets/icons/fire.svg', 'Streak:', '5 days'),
-                ],
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
 
-    void _showTodaysWorkoutsModal(BuildContext context) {
-      showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            padding: EdgeInsets.all(10),
-            color: Color(0xFF1E1E1E),
-            child: ListView.builder(
-              itemCount: todaysWorkouts.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Center(
-                    child: Text(
-                      todaysWorkouts[index],
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+  void _showTodaysWorkoutsModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(10),
+          color: Color(0xFF1E1E1E),
+          child: ListView.builder(
+            itemCount: todaysWorkouts.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                title: Center(
+                  child: Text(
+                    todaysWorkouts[index],
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
-                );
-              },
-            ),
-          );
-        },
-      );
-    }
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
 
   Widget buildRow(String iconPath, String text1, String text2) {
     return Row(

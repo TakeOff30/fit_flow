@@ -18,32 +18,40 @@ class _MainAppState extends State<MainApp> {
       body: IndexedStack(
         index: _currentIndex,
         children: [
-          WorkoutScreen(),
           HomeScreen(routeToWorkoutScreen: (int index) {
             setState(() {
               _currentIndex = index;
             });
           }),
+          WorkoutScreen(),
           CalendarScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: primaryColor,
+        selectedItemColor: secondaryColor,
+        unselectedItemColor: tertiaryColor,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         onTap: (int index) {
           setState(() {
             _currentIndex = index;
           });
         },
         currentIndex: _currentIndex,
-        items: [
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            label: 'Messages',
+            icon: Icon(Icons.fitness_center),
+            label: 'Create Workout',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile')
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month),
+            label: 'Calendar',
+          ),
         ],
       ),
     );
