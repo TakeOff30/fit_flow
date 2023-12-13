@@ -8,7 +8,7 @@ import 'package:fit_flow/workout_screen_widgets/exercise_list.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutScreen extends StatefulWidget {
-  const WorkoutScreen({super.key});
+  WorkoutScreen({super.key});
 
   @override
   State<WorkoutScreen> createState() => _WorkoutScreenState();

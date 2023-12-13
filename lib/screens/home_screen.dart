@@ -5,7 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fit_flow/screens/workout_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final Function(int) routeToWorkoutScreen;
+
+  const HomeScreen({super.key, required this.routeToWorkoutScreen});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -19,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF1E1E1E),
+<<<<<<< Updated upstream
       body: Stack(
         children: [
           Positioned(
@@ -33,6 +36,35 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
+=======
+      body: Padding(
+        padding: EdgeInsets.all(16.32),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  widget.routeToWorkoutScreen(0);
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF39FF14), // Colore di sfondo
+                  onPrimary: Color(0xFF1E1E1E), // Colore del testo
+                  minimumSize: Size.fromHeight(100), // Altezza fissa di 100
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(20), // Corner radius di 20
+                  ),
+                ),
+                child: Text(
+                  'Create Workout',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Lato',
+                  ),
+>>>>>>> Stashed changes
                 ),
               ),
             ),
